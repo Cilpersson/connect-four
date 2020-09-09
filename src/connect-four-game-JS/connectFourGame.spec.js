@@ -12,3 +12,43 @@ describe("Player one drops a disc in the middle", () => {
     expect(game.gameBoard).toEqual([[], [], [], [1], [], [], []]);
   });
 });
+
+describe("Player two drops their disk to left of player one", () => {
+  it("should result in two empty arrays, two arrays with one disc each and three more empty arrays", () => {
+    game.dropDisc(1, 3);
+    game.dropDisc(-1, 2);
+    expect(game.gameBoard).toEqual([[], [], [-1], [1], [], [], []]);
+  });
+});
+
+describe("You should not be able to add more than six discs to one row", () => {
+  it("should only be six discs in the row even if more than that has been dropped", () => {
+    game.dropDisc(1, 3);
+    game.dropDisc(-1, 3);
+    game.dropDisc(1, 3);
+    game.dropDisc(-1, 3);
+    game.dropDisc(1, 3);
+    game.dropDisc(-1, 3);
+    game.dropDisc(1, 3);
+
+    expect(game.gameBoard).toEqual([
+      [],
+      [],
+      [],
+      [1, -1, 1, -1, 1, -1],
+      [],
+      [],
+      [],
+    ]);
+  });
+});
+
+describe("For discs from the same player in a vertical row results in winning the game", () => {
+  it("should return true if player one puts for discs on top of each other", () => {
+    game.dropDisc(1, 3);
+    game.dropDisc(1, 3);
+    game.dropDisc(1, 3);
+    game.dropDisc(1, 3);
+    expect(game.isFourInARowVertical(1, 3)).toEqual(true);
+  });
+});

@@ -17,14 +17,38 @@ export class ConnectFour {
       [],
     ];
     this.currentPlayer = 1;
+    this.winner = 0;
   }
 
   dropDisc(currentPlayer, index) {
-    this.gameBoard[index].push(currentPlayer);
-    // Needs to check the arrays at same index to see how low it can be dropped
+    if (this.gameBoard[index].length < 6) {
+      this.gameBoard[index].push(currentPlayer);
+    }
+
+    //Every time a disc has been dropped check for winner should be called
+    // checkForWinner(index)
   }
 
-  checkForFourInARow() {
-    // This method should be called inside of dropDisc()
+  checkForWinner() {
+    if (this.isFourInARowDiagonal(player)) return true;
+    if (this.isFourInARowVertical(player)) return true;
+    if (this.isFourInARowHorizontal(player)) return true;
+  }
+  isFourInARowDiagonal(player) {}
+
+  isFourInARowHorizontal(player) {}
+
+  isFourInARowVertical(player, index) {
+    let counter = 0;
+
+    this.gameBoard[index].forEach((value) => {
+      if (value === player) {
+        counter++;
+      } else {
+        counter = 0;
+      }
+    });
+
+    return counter >= 4;
   }
 }
