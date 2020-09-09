@@ -24,7 +24,9 @@ export const GameBoard = styled.section`
   grid-gap: 10px;
   padding: 10px;
 
-  box-shadow: 5px 5px 0 1px ${shadowBlue};
+  box-shadow: 5px 5px 0 5px ${shadowBlue};
+
+  border-radius: 5px;
 `;
 
 export const GameCircleWrapper = styled.div`
@@ -41,10 +43,15 @@ export const GameCircleWrapper = styled.div`
   align-items: center;
 `;
 
-export const CircleSlot = styled.section`
+export const CircleSlot = styled.div`
   height: calc(100% - 10px);
   width: calc(100% - 10px);
 
-  background: white;
+  background: ${(props) => props.background || "white"};
+
+  box-shadow: inset 10px 10px 10px #ffffff99;
   border-radius: 50%;
+  //If there is a background prop passed to the component
+  //(meaning the slot is taken), there will be a border
+  border: ${({ background }) => (background ? "2px solid #00000050" : "none")};
 `;
