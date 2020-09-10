@@ -48,15 +48,11 @@ export class ConnectFour {
 
     // VTI & HTI is starting point for the top to bottom diagonal traverse
     let verticalTopIndex = verticalIndex - upAndLeftSteps;
-    let horizontalTopIndex = horizontalIndex - upAndLeftSteps;
+    let horizontalTopIndex = horizontalIndex + upAndLeftSteps;
 
     // VBI & HBI is starting point for the bottom to top diagonal traverse
     let verticalBottomIndex = verticalIndex - downAndLeftSteps;
     let horizontalBottomIndex = horizontalIndex - downAndLeftSteps;
-    console.log(
-      "topToBottom: ",
-      this.topToBottom(player, verticalTopIndex, horizontalTopIndex)
-    );
 
     if (
       this.topToBottom(player, verticalTopIndex, horizontalTopIndex) ||
