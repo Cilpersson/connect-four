@@ -39,6 +39,7 @@ export class ConnectFour {
 
     let downAndLeftSteps =
       verticalIndex >= horizontalIndex ? horizontalIndex : verticalIndex;
+
     let upAndLeftSteps =
       verticalIndex >= topMostIndex - horizontalIndex
         ? topMostIndex - horizontalIndex
@@ -69,7 +70,9 @@ export class ConnectFour {
   //Moves left to right
   topToBottom(player, verticalTopIndex, horizontalTopIndex) {
     let counter = 0;
+
     while (verticalTopIndex <= 6 && horizontalTopIndex >= 0) {
+
       if (this.gameBoard[verticalTopIndex][horizontalTopIndex] === player) {
         counter++;
         if (counter === 4) return true;
