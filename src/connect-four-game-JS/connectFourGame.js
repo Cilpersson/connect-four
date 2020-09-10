@@ -39,12 +39,10 @@ export class ConnectFour {
 
     let downAndLeftSteps =
       verticalIndex >= horizontalIndex ? horizontalIndex : verticalIndex;
-    console.log("This is the downAndLeftSteps value: ", downAndLeftSteps);
     let upAndLeftSteps =
       verticalIndex >= topMostIndex - horizontalIndex
         ? topMostIndex - horizontalIndex
         : verticalIndex;
-    console.log("This is the upAndLeftSteps value: ", upAndLeftSteps);
 
     // VTI & HTI is starting point for the top to bottom diagonal traverse
     let verticalTopIndex = verticalIndex - upAndLeftSteps;
@@ -71,9 +69,7 @@ export class ConnectFour {
   //Moves left to right
   topToBottom(player, verticalTopIndex, horizontalTopIndex) {
     let counter = 0;
-    console.log("GAME BOARD: ", this.gameBoard);
     while (verticalTopIndex <= 6 && horizontalTopIndex >= 0) {
-      console.log("VTI: ", verticalTopIndex, "HTI: ", horizontalTopIndex);
       if (this.gameBoard[verticalTopIndex][horizontalTopIndex] === player) {
         counter++;
         if (counter === 4) return true;
