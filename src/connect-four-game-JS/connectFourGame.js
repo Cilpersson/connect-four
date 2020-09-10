@@ -24,7 +24,7 @@ export class ConnectFour {
       return true;
     }
   }
-  isFourInARowDiagonal(player, horizontalIndex, verticalIndex) {
+  isFourInARowDiagonal(player, verticalIndex, horizontalIndex) {
     // METHOD 1 FIND TOP AND BOTTOM LEFT AND GO RIGHT DIAGONALLY
     // STEP 1: Define outer edge indexes and move from current place untill you hit the index
     // Remember top left and bottom left index
@@ -71,19 +71,19 @@ export class ConnectFour {
     // Remember count and add, if >= 4 return true
     //
   }
+
   //Moves left to right
   topToBottom(player, verticalTopIndex, horizontalTopIndex) {
     let counter = 0;
-
-    while (verticalTopIndex >= 0 && horizontalTopIndex <= 6) {
+    console.log("GAME BOARD: ", this.gameBoard);
+    while (verticalTopIndex <= 6 && horizontalTopIndex >= 0) {
       console.log("VTI: ", verticalTopIndex, "HTI: ", horizontalTopIndex);
-      console.log("Kommer man hit", this.gameBoard[0]);
       if (this.gameBoard[verticalTopIndex][horizontalTopIndex] === player) {
         counter++;
         if (counter === 4) return true;
       }
-      verticalTopIndex--;
-      horizontalTopIndex++;
+      verticalTopIndex++;
+      horizontalTopIndex--;
     }
   }
 
