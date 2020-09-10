@@ -88,6 +88,11 @@ describe("For discs from the same player in a horizontal line results in winning
 describe("For discs from the same player in a diagonal line results in winning the game", () => {
   it("should return true if player one puts for discs diagonally next to each other", () => {
     game.gameBoard = [[-1, -1, -1, 1], [-1, -1, 1], [-1, 1], [1], [], [], []];
-    expect(game.isFourInARowDiagonal(1, 0, 3)).toEqual(true);
+    expect(game.isFourInARowDiagonal(1, 3, 0)).toEqual(true);
   });
 });
+/*
+verticalIndex = 0
+horizontalIndex = 3
+topMostIndex = 5
+*/
