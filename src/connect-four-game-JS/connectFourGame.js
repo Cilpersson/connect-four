@@ -58,7 +58,7 @@ export class ConnectFour {
       "topToBottom: ",
       this.topToBottom(player, verticalTopIndex, horizontalTopIndex)
     );
-    console.log("bottomToTop: ", verticalBottomIndex, horizontalBottomIndex);
+
     if (
       this.topToBottom(player, verticalTopIndex, horizontalTopIndex) ||
       this.bottomToTop(verticalBottomIndex, horizontalBottomIndex)
