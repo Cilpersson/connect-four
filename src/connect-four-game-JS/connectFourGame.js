@@ -31,8 +31,6 @@ export class ConnectFour {
     // STEP 2: Start moving from top left diagonally down and count if 4 return true
     // STEP 3: Start moving from bottom left and count if 4 return true
 
-    let leftMostIndex = 0;
-    let bottomMostIndex = 0;
     let topMostIndex = 5;
     let rightMostIndex = 6;
 
@@ -41,15 +39,56 @@ export class ConnectFour {
 
     let downAndLeftSteps =
       verticalIndex >= horizontalIndex ? horizontalIndex : verticalIndex;
+    console.log("This is the downAndLeftSteps value: ", downAndLeftSteps);
 
     let upAndLeftSteps =
       verticalIndex >= topMostIndex - horizontalIndex
         ? topMostIndex - horizontalIndex
         : verticalIndex;
+    console.log("This is the upAndLeftSteps value: ", upAndLeftSteps);
+
+    // VTI & HTI is starting point for the top to bottom diagonal traverse
+    let verticalTopIndex = verticalIndex - upAndLeftSteps;
+    let horizontalTopIndex = horizontalIndex - upAndLeftSteps;
+
+    // VBI & HBI is starting point for the bottom to top diagonal traverse
+    let verticalBottomIndex = verticalIndex - downAndLeftSteps;
+    let horizontalBottomIndex = horizontalIndex - downAndLeftSteps;
+    console.log(
+      "topToBottom: ",
+      this.topToBottom(player, verticalTopIndex, horizontalTopIndex)
+    );
+    console.log("bottomToTop: ", verticalBottomIndex, horizontalBottomIndex);
+    if (
+      this.topToBottom(player, verticalTopIndex, horizontalTopIndex) ||
+      this.bottomToTop(verticalBottomIndex, horizontalBottomIndex)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
 
     //METHOD 2 Move down left and top right from current untill you "Miss"
     // Remember count and add, if >= 4 return true
     //
+  }
+  //Moves left to right
+  topToBottom(player, verticalTopIndex, horizontalTopIndex) {
+    let counter = 0;
+
+    while (verticalTopIndex >= 0 && horizontalTopIndex <= 6) {
+      console.log("VTI: ", verticalTopIndex, "HTI: ", horizontalTopIndex);
+      if (this.gameBoard[verticalTopIndex][horizontalTopIndex] === player) {
+        counter++;
+        if (counter === 4) return true;
+      }
+      verticalTopIndex--;
+      horizontalTopIndex++;
+    }
+  }
+
+  bottomToTop(one, two) {
+    return false;
   }
 
   isFourInARowHorizontal(player, horizontalIndex) {

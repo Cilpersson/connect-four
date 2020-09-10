@@ -7,6 +7,7 @@ const shadowBlue = "#052452";
 export const MainWrapper = styled.section`
   width: 100vw;
   height: 100vh;
+  background: grey;
 
   display: flex;
   justify-content: center;
